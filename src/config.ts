@@ -12,8 +12,8 @@ export const siteConfig: SiteConfig = {
 	subtitle: "个人开发者网站",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
-		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
-		fixed: false, // Hide the theme color picker for visitors
+		hue: 255, // Apple system blue (#0066CC light / #2997FF dark)
+		fixed: true, // One considered palette — no hue picker in the navbar
 	},
 	banner: {
 		enable: false,
@@ -45,11 +45,16 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		LinkPreset.About,
+		{
+			name: "onlynor.github.io",
+			url: "https://onlynor.github.io/",
+			external: true,
+		},
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "assets/images/avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "onlynor",
 	bio: "个人开发者 · 记录学习与创作",
 	links: [
