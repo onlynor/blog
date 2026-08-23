@@ -1,3 +1,8 @@
+/* NOTE: do not `@apply` component classes that are declared in another stylesheet
+   (main.css). Astro compiles each stylesheet as a separate PostCSS root, so the
+   @layer they live in may not be registered yet — the build then fails at random
+   with "The `x` class does not exist". Inline the declarations instead. */
+
 .custom-md {
     h1 {
         @apply text-3xl;
@@ -20,7 +25,11 @@
     }
 
     a:not(.no-styling) {
-        @apply relative bg-none link font-medium text-[var(--primary)]
+        /* inlined from .link / .expand-animation in main.css — see note below */
+        @apply relative bg-none transition rounded-md p-1 -m-1 z-0 font-medium text-[var(--primary)]
+        before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:ease-out before:transition
+        before:scale-[0.85] hover:before:scale-100 active:bg-none
+        hover:before:bg-[var(--btn-plain-bg-hover)] active:before:bg-[var(--btn-plain-bg-active)]
         underline decoration-[var(--link-underline)] decoration-1 decoration-dashed underline-offset-4;
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
@@ -61,7 +70,11 @@
 
     .copy-btn {
         all: initial;
-        @apply btn-regular-dark opacity-0 shadow-lg shadow-black/50 absolute active:scale-90 h-8 w-8 top-3 right-3 text-sm rounded-lg transition-all ease-in-out z-20 cursor-pointer;
+        /* inlined from .btn-regular-dark in main.css — see note below */
+        @apply flex items-center justify-center
+        bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
+        dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
+        opacity-0 shadow-lg shadow-black/50 absolute active:scale-90 h-8 w-8 top-3 right-3 text-sm rounded-lg transition-all ease-in-out z-20 cursor-pointer;
     }
     .frame:hover .copy-btn {
         opacity: 1;
