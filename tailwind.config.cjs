@@ -6,7 +6,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Roboto", "sans-serif", ...defaultTheme.fontFamily.sans],
+        // SF Pro on Apple platforms, sensible fallbacks elsewhere.
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "SF Pro Text",
+          "SF Pro Display",
+          "Helvetica Neue",
+          "Segoe UI",
+          "PingFang SC",
+          "Hiragino Sans GB",
+          "Microsoft YaHei",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
     },
   },
