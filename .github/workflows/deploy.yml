@@ -10,9 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# GitHub Pages allows one deployment at a time. Queue instead of cancelling —
+# a deployment killed halfway leaves the live site in an inconsistent state.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
