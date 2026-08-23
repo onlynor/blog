@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "onlynor's site",
+	title: "onlynor's blog",
 	subtitle: "个人开发者网站",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
@@ -46,7 +46,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
-			name: "onlynor.github.io",
+			name: "PersonalSite",
 			url: "https://onlynor.github.io/",
 			external: true,
 		},
